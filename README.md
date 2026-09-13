@@ -43,6 +43,12 @@ and narrowed values or accumulated norms to float. The correction computes
 with max-magnitude scaling in double and is submitted as
 [microsoft/onnxruntime#32573](https://github.com/microsoft/onnxruntime/pull/32573).
 
+The published operator documentation has a separate mathematical error: its L1
+formula omits absolute values, and its L2 formula places `X` inside the square
+root. The focused documentation correction is submitted as
+[onnx/onnx#8451](https://github.com/onnx/onnx/pull/8451). It deliberately leaves
+the separately ambiguous `MAX` semantics unchanged.
+
 ## Reproduce
 
 ```bash
