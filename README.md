@@ -60,6 +60,18 @@ python3.12 -m venv .venv
 The script contains assertions for every reported behavior and an independent
 scaled oracle.
 
+The separate `MAX`-mode semantic conflict is reproduced with:
+
+```bash
+.venv/bin/python reproduce_max_semantic_conflict.py
+```
+
+For negative inputs, released ONNX Runtime follows the prose formula
+`X / max(X)`, while ONNX ReferenceEvaluator and scikit-learn's `max`
+normalizer divide by `max(abs(X))`. This is tracked separately because
+resolving it requires a specification decision before changing runtime
+behavior.
+
 ## Versions and boundary
 
 - reproduced with ONNX `1.22.0`, ONNX Runtime `1.29.0`, NumPy `2.5.2`, Python
