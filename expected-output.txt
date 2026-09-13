@@ -1,0 +1,46 @@
+FLOAT32 L2
+input:
+ [[ 1.e+30  1.e+30]
+ [ 1.e-30 -1.e-30]]
+ONNX ReferenceEvaluator:
+ [[ 0.  0.]
+ [ 1. -1.]]
+ONNX Runtime CPU:
+ [[    nan     nan]
+ [ 1.e-30 -1.e-30]]
+scaled oracle:
+ [[ 0.70710677  0.70710677]
+ [ 0.70710677 -0.70710677]]
+
+FLOAT64 FINITE RANGE
+MAX reference dtype=float64:
+ [[ 1.e+000  1.e+000]
+ [ 1.e-270 -1.e-270]]
+MAX runtime dtype=float32:
+ [[nan nan]
+ [ 0. -0.]]
+MAX oracle dtype=float32:
+ [[ 1.  1.]
+ [ 1. -1.]]
+L1 reference dtype=float64:
+ [[ 5.e-001  5.e-001]
+ [ 1.e-270 -1.e-270]]
+L1 runtime dtype=float32:
+ [[nan nan]
+ [ 0. -0.]]
+L1 oracle dtype=float32:
+ [[ 0.5  0.5]
+ [ 0.5 -0.5]]
+L2 reference dtype=float64:
+ [[ 0.e+000  0.e+000]
+ [ 1.e-270 -1.e-270]]
+L2 runtime dtype=float32:
+ [[nan nan]
+ [ 0. -0.]]
+L2 oracle dtype=float32:
+ [[ 0.70710677  0.70710677]
+ [ 0.70710677 -0.70710677]]
+
+INT32 RANK-1 ReferenceEvaluator error: axis 1 is out of bounds for array of dimension 1
+
+All released-behavior checks reproduced.
